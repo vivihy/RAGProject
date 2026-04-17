@@ -30,6 +30,7 @@ def retrieval_metrics(retrieved_docs, gold_doc_ids, k=5):
 def answer_similarity(generated, reference):
     _, _, F1 = bert_scorer.score([generated], [reference])
     return F1.item()
+
 # When there is a reference answer: Calculate the maximum cosine similarity between the retrieved documents and the reference context.
 def context_relevance_with_ref(retrieved_docs, reference_context):
     if not retrieved_docs:
@@ -42,12 +43,20 @@ def context_relevance_with_ref(retrieved_docs, reference_context):
     sims = cosine_similarity(ref_emb, doc_embs)[0]
     return float(np.max(sims))
 
-def case1_score(retrieved_docs, generated_answer, row, alpha=0.3, beta=0.4, gamma=0.3):
+def case1_score(retrieved_docs, generated_answer, row, alpha=0.3, beta=0.4, gamma=0.3, return_dict=False):
     ret_met = retrieval_metrics(retrieved_docs, row["reference_doc_ids"], k=5)
     recall = ret_met["recall"]
     ans_sim = answer_similarity(generated_answer, row["reference_answer"])
     ctx_rel = context_relevance_with_ref(retrieved_docs, row["reference_relevant_context"])
-    return alpha * recall + beta * ans_sim + gamma * ctx_rel
+    total = alpha * recall + beta * ans_sim + gamma * ctx_rel
+    if return_dict:
+        return {
+            "recall": recall,
+            "answer_similarity": ans_sim,
+            "context_relevance": ctx_rel,
+            "total_score": total
+        }
+    return total
 
 def context_relevance_unsupervised(query, retrieved_docs):
     if not retrieved_docs:
@@ -73,8 +82,16 @@ def answer_relevance_unsupervised(query, generated_answer):
     sim = cosine_similarity(emb_q, emb_a)[0][0]
     return float((sim + 1) / 2)
 
-def case2_score(retrieved_docs, generated_answer, query):
+def case2_score(retrieved_docs, generated_answer, query, return_dict=False):
     ctx_rel = context_relevance_unsupervised(query, retrieved_docs)
     faithful = faithfulness_unsupervised(generated_answer, retrieved_docs)
     ans_rel = answer_relevance_unsupervised(query, generated_answer)
-    return 0.4 * ctx_rel + 0.3 * faithful + 0.3 * ans_rel
+    total = 0.4 * ctx_rel + 0.3 * faithful + 0.3 * ans_rel
+    if return_dict:
+        return {
+            "context_relevance": ctx_rel,
+            "faithfulness": faithful,
+            "answer_relevance": ans_rel,
+            "total_score": total
+        }
+    return total

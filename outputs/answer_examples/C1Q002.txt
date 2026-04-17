@@ -1,7 +1,0 @@
-A transaction monitoring alert can be escalated under the following conditions:
-
-1. When pattern scores exceed threshold.
-2. When sanctions-related entities are detected.
-3. When structuring behavior is observed across linked accounts.
-
-These points are mentioned in the context: "A transaction monitoring alert may be escalated when pattern scores exceed threshold, when sanctions-related entities are detected, or when structuring behavior is observed across linked accounts."

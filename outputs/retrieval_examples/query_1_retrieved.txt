@@ -1,0 +1,12 @@
+Query: When can a transaction monitoring alert be escalated?
+
+Retrieved Documents:
+
+--- Doc 1 (score: 12.2781) ---
+A transaction monitoring alert may be escalated when pattern scores exceed threshold, when sanctions-related entities are detected, or when structuring behavior is observed across linked accounts.
+
+--- Doc 2 (score: 2.1989) ---
+A retail bank CRM assistant should use the latest source of truth from product policy documents and fee schedules. Personal data fields must be masked before external model calls.
+
+--- Doc 3 (score: 1.7730) ---
+When no reference answer exists, evaluation should emphasize retrieval coverage, citation quality, answer groundedness, and model-based pairwise judgment with human spot checks.

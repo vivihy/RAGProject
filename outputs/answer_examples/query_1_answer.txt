@@ -1,0 +1,10 @@
+Query: When can a transaction monitoring alert be escalated?
+
+Generated Answer:
+A transaction monitoring alert can be escalated when pattern scores exceed threshold, sanctions-related entities are detected, or structuring behavior is observed across linked accounts.
+
+Metrics:
+recall: 0.4000
+answer_similarity: 0.7991
+context_relevance: 1.0000
+total_score: 0.7397

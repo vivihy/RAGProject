@@ -1,0 +1,14 @@
+{
+  "chunk_size": 256,
+  "chunk_overlap": 0,
+  "chunk_strategy": "token",
+  "retriever_type": "dense",
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "metadata_enrichment": false,
+  "rerank_enabled": false,
+  "rerank_model": "BAAI/bge-reranker-base",
+  "query_rewrite": false,
+  "llm_provider": "zhipu-glm4-flash",
+  "temperature": 0.2,
+  "answer_style": "citation_first"
+}

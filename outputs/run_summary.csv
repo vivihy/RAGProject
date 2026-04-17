@@ -1,0 +1,2 @@
+number,value,datetime_start,datetime_complete,duration,params_answer_style,params_chunk_overlap,params_chunk_size,params_chunk_strategy,params_embedding_model,params_llm_provider,params_metadata_enrichment,params_query_rewrite,params_rerank_enabled,params_rerank_model,params_retriever_type,params_temperature,state
+0,0.5652465882897377,2026-04-17 00:29:08.007338,2026-04-17 00:34:22.172375,0 days 00:05:14.165037,citation_first,0,256,token,sentence-transformers/all-MiniLM-L6-v2,zhipu-glm4-flash,False,False,False,BAAI/bge-reranker-base,dense,0.2,COMPLETE
